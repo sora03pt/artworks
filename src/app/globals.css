@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f7f7f3;
+  --ink: #242b26;
+}
+
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Arial, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif; }
+button { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+button:focus-visible { outline: none; opacity: .65; }
+
+.site-header, .gallery-section { max-width: 1680px; margin-inline: auto; padding-inline: 30px; }
+.header-row { min-height: 86px; display: flex; align-items: center; }
+.wordmark { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 26px; font-weight: 700; line-height: 1; }
+
+.gallery-section { padding-top: 7px; padding-bottom: 80px; }
+.gallery-groups { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 10px; }
+.gallery-group { display: grid; align-content: start; gap: 8px; min-width: 0; }
+.group-artworks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 8px; }
+.artwork-card { display: block; }
+.artwork-card--medium { width: 94%; margin-left: auto; }
+.artwork-card--small { width: 88%; }
+.artwork-button { display: block; width: 100%; padding: 0; border: 0; background: transparent; text-align: left; transform: scale(1); transition: transform 450ms ease-out, opacity 200ms ease-out; }
+.artwork-button:active { opacity: .65; }
+.artwork-frame { display: block; background: #e9e9e3; }
+.artwork-image { display: block; width: 100%; height: auto; }
+.heading-panel { display: flex; flex-direction: column; justify-content: space-between; width: 100%; aspect-ratio: var(--panel-aspect); padding: 16px; overflow: hidden; }
+.heading-panel-subtitle { font-family: Georgia, "Times New Roman", serif; font-size: 12px; font-style: italic; line-height: 1.4; }
+.heading-panel h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 30px; font-weight: 400; line-height: 1.02; white-space: pre-line; overflow-wrap: anywhere; }
+.heading-panel p { margin: 14px 0 0; font-size: 11px; line-height: 1.65; }
+
+.lightbox-backdrop { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 28px; background: transparent; animation: lightbox-fade-in 320ms ease-out both; }
+body:has(.lightbox-backdrop) .site-header, body:has(.lightbox-backdrop) .gallery-section { visibility: hidden; }
+.lightbox-dialog { position: relative; display: grid; place-items: center; width: min(1280px, 100%); height: calc(100dvh - 56px); color: var(--ink); transform-origin: center; animation: lightbox-grow-in 320ms ease-out both; }
+.lightbox-backdrop.is-closing { pointer-events: none; animation: lightbox-fade-out 280ms ease-in both; }
+.lightbox-backdrop.is-closing .lightbox-dialog { animation: lightbox-shrink-out 280ms ease-in both; }
+@keyframes lightbox-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lightbox-fade-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes lightbox-grow-in { from { opacity: .6; transform: scale(.94); } to { opacity: 1; transform: scale(1); } }
+@keyframes lightbox-shrink-out { from { opacity: 1; transform: scale(1); } to { opacity: .6; transform: scale(.94); } }
+.lightbox-close { position: absolute; top: 0; right: 0; z-index: 2; }
+.icon-button { display: inline-grid; place-items: center; width: 42px; height: 42px; border: 1px solid rgba(36,43,38,.35); border-radius: 0; background: rgba(247,247,243,.92); color: inherit; transition: background-color .2s ease, opacity .2s ease; }
+.icon-button:hover { background: #fff; }
+.lightbox-image-wrap { display: grid; place-items: center; width: 100%; min-width: 0; min-height: 0; }
+.lightbox-image { display: block; width: auto; height: auto; max-width: 100%; max-height: calc(100dvh - 56px); object-fit: contain; }
+.lightbox-prev, .lightbox-next { position: absolute; top: 50%; z-index: 2; transform: translateY(-50%); }
+.lightbox-prev { left: 0; }
+.lightbox-next { right: 0; }
+
+@media (hover: hover) and (pointer: fine) {
+  .artwork-card:hover, .artwork-card:focus-within { position: relative; z-index: 1; }
+  .artwork-button:hover, .artwork-button:focus-visible { transform: scale(1.03); }
+}
+@media (min-width: 768px) {
+  .gallery-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  .gallery-groups { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .gallery-group { grid-column: span 2; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .gallery-group .heading-panel { aspect-ratio: 7; }
+}
+@media (min-width: 1600px) {
+  .gallery-groups { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .gallery-group:last-child { grid-column: span 3; }
+  .gallery-group:last-child .heading-panel { aspect-ratio: 11; }
+}
+@media (max-width: 800px) {
+  .lightbox-backdrop { padding: 15px; }
+  .lightbox-dialog { height: calc(100dvh - 30px); }
+  .lightbox-image { max-height: calc(100dvh - 30px); }
+}
+@media (max-width: 640px) {
+  .site-header, .gallery-section { padding-inline: 17px; }
+  .header-row { min-height: 68px; }
+  .wordmark { font-size: 23px; }
+  .gallery-section { padding-top: 3px; padding-bottom: 55px; }
+  .gallery-groups { gap: 10px; }
+  .gallery-group, .group-artworks { gap: 8px; }
+  .heading-panel { padding: 13px; }
+  .heading-panel h2 { font-size: 22px; }
+  .heading-panel-subtitle, .heading-panel p { font-size: 10px; }
+  .lightbox-prev, .lightbox-next { width: 38px; height: 38px; }
+}
+@media (max-width: 380px) {
+  .heading-panel h2 { font-size: 19px; }
+  .heading-panel p { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .artwork-button, .icon-button { transition-duration: 0.01ms; }
+  .lightbox-backdrop, .lightbox-dialog, .lightbox-backdrop.is-closing, .lightbox-backdrop.is-closing .lightbox-dialog { animation-duration: 0.01ms; }
+}
