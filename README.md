@@ -15,9 +15,9 @@ npm run dev
 
 1. 作品画像（WebP推奨）を `public/artworks/` に置きます。
 2. 画像の実寸の幅・高さを確認します。
-3. `src/data/gallery.ts` の `galleryItems` に `type: "artwork"` の項目を追加します。`image` は `/artworks/ファイル名`、`width` と `height` は画像の実寸を指定します。`displaySize` は `large`、`medium`、`small` から選べます。
+3. `src/data/gallery.ts` の `galleryItems` に `type: "artwork"` の項目を追加します。`image` は `/artworks/ファイル名`、`width` と `height` は画像の実寸を指定します。
 
-`width` と `height` は画像を切り抜かずに表示し、読み込み前のレイアウトを確保するために使います。現在の4枚は提供された作品写真をWebPに変換したものです。元のJPEGも同じフォルダに残しています。作品名と説明文は仮の表記で、制作年と画材は未登録です。正式な情報が分かれば同じ配列の項目を書き換えてください。
+`width` と `height` は画像の実寸です。表示枠は全作品で同じ3:4とし、画像は切り抜かず枠内に収めます。現在の4枚は提供された作品写真をWebPに変換したものです。元のJPEGも同じフォルダに残しています。作品名と説明文は仮の表記で、制作年と画材は未登録です。正式な情報が分かれば同じ配列の項目を書き換えてください。
 
 ## 見出しパネルを追加する
 
@@ -25,7 +25,7 @@ npm run dev
 
 ## GitHub Pages
 
-`main` への反映後、リポジトリの Settings > Pages で公開元を GitHub Actions に設定してください。`.github/workflows/pages.yml` が静的ファイルをビルドして公開します。公開先は `https://sora03pt.github.io/artworks/` です。
+リポジトリの Pages 公開元は GitHub Actions に設定済みです。`main` への反映後、`.github/workflows/pages.yml` が静的ファイルをビルドして公開します。公開先は `https://sora03pt.github.io/artworks/` です。
 
 GitHub Pages 用ビルドでは `NEXT_PUBLIC_BASE_PATH=/artworks` を指定し、Next.js のアセットと作品画像の参照先を揃えます。ローカルの `npm run dev` では指定不要です。
 

@@ -8,7 +8,6 @@ export type Artwork = {
   year: string;
   medium: string;
   description: string;
-  displaySize?: "large" | "medium" | "small";
 };
 
 export type HeadingPanel = {
@@ -45,7 +44,6 @@ export const galleryItems: GalleryItem[] = [
     year: "未登録",
     medium: "未登録",
     description: "古い紙に描かれた人物の肖像。",
-    displaySize: "large",
   },
   {
     type: "artwork",
@@ -57,7 +55,6 @@ export const galleryItems: GalleryItem[] = [
     year: "未登録",
     medium: "未登録",
     description: "青い紙に描かれた手の素描。",
-    displaySize: "medium",
   },
   {
     type: "heading",
@@ -79,7 +76,6 @@ export const galleryItems: GalleryItem[] = [
     year: "未登録",
     medium: "未登録",
     description: "幾何学的な色と形を組み合わせた作品。",
-    displaySize: "large",
   },
   {
     type: "artwork",
@@ -91,7 +87,6 @@ export const galleryItems: GalleryItem[] = [
     year: "未登録",
     medium: "未登録",
     description: "三角形や円がリズミカルに並ぶ作品。",
-    displaySize: "small",
   },
 ];
 

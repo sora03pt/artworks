@@ -18,7 +18,7 @@ function ArtworkCard({
   eager: boolean;
 }) {
   return (
-    <article className={`artwork-card artwork-card--${artwork.displaySize ?? "large"}`}>
+    <article className="artwork-card">
       <button
         className="artwork-button"
         type="button"
