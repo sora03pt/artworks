@@ -57,6 +57,17 @@ export const galleryItems: GalleryItem[] = [
     description: "青い紙に描かれた手の素描。",
   },
   {
+    type: "artwork",
+    id: "scissors-2181",
+    title: "はさみの習作",
+    image: "/artworks/2181.webp",
+    width: 1280,
+    height: 925,
+    year: "未登録",
+    medium: "未登録",
+    description: "はさみを描いたモノクロの作品。",
+  },
+  {
     type: "heading",
     id: "geometry-heading",
     title: "GEOMETRY",
